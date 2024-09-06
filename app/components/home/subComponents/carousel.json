@@ -1,0 +1,176 @@
+{
+  "carousels": [
+    {
+      "name": "Kitchen",
+      "description": "A collection of stylish kitchen designs showcasing modern layouts and sleek appliances.",
+      "images": [
+        {
+          "src": "/asset/img/kitchen/kitchen1.jpg",
+          "description": "Kitchen design 1."
+        },
+        {
+          "src": "/asset/img/kitchen/kitchen2.jpg",
+          "description": "Kitchen design 2."
+        },
+        {
+          "src": "/asset/img/kitchen/kitchen3.jpg",
+          "description": "Kitchen design 3."
+        },
+        {
+          "src": "/asset/img/kitchen/kitchen4.jpg",
+          "description": "Kitchen design 4."
+        },
+        {
+          "src": "/asset/img/kitchen/kitchen5.jpg",
+          "description": "Kitchen design 5."
+        },
+        {
+          "src": "/asset/img/kitchen/kitchen6.jpg",
+          "description": "Kitchen design 6."
+        },
+        {
+          "src": "/asset/img/kitchen/kitchen7.jpg",
+          "description": "Kitchen design 7."
+        },
+        {
+          "src": "/asset/img/kitchen/kitchen8.jpg",
+          "description": "Kitchen design 8."
+        },
+        {
+          "src": "/asset/img/kitchen/kitchen9.jpg",
+          "description": "Kitchen design 9."
+        }
+      ]
+    },
+    {
+      "name": "Bedroom",
+      "description": "Serene bedroom designs featuring cozy decor, soft lighting, and inviting atmospheres.",
+      "images": [
+        {
+          "src": "/asset/img/bedroom/bedroom1.jpg",
+          "description": "Bedroom design 1."
+        },
+        {
+          "src": "/asset/img/bedroom/bedroom2.jpg",
+          "description": "Bedroom design 2."
+        },
+        {
+          "src": "/asset/img/bedroom/bedroom3.jpg",
+          "description": "Bedroom design 3."
+        },
+        {
+          "src": "/asset/img/bedroom/bedroom4.jpg",
+          "description": "Bedroom design 4."
+        },
+        {
+          "src": "/asset/img/bedroom/bedroom5.jpg",
+          "description": "Bedroom design 5."
+        },
+        {
+          "src": "/asset/img/bedroom/bedroom6.jpg",
+          "description": "Bedroom design 6."
+        },
+        {
+          "src": "/asset/img/bedroom/bedroom7.jpg",
+          "description": "Bedroom design 7."
+        },
+        {
+          "src": "/asset/img/bedroom/bedroom8.jpg",
+          "description": "Bedroom design 8."
+        }
+      ]
+    },
+    {
+      "name": "LivingRoom",
+      "description": "Elegant sitting room designs with comfortable seating, warm tones, and tasteful decor.",
+      "images": [
+        {
+          "src": "/asset/img/livingroom/livingroom1.jpg",
+          "description": "Living room design 1."
+        },
+        {
+          "src": "/asset/img/livingroom/livingroom2.jpg",
+          "description": "Living room design 2."
+        },
+        {
+          "src": "/asset/img/livingroom/livingroom3.jpg",
+          "description": "Living room design 3."
+        },
+        {
+          "src": "/asset/img/livingroom/livingroom4.jpg",
+          "description": "Living room design 4."
+        },
+        {
+          "src": "/asset/img/livingroom/livingroom5.jpg",
+          "description": "Living room design 5."
+        },
+        {
+          "src": "/asset/img/livingroom/livingroom6.jpg",
+          "description": "Living room design 6."
+        },
+        {
+          "src": "/asset/img/livingroom/livingroom7.jpg",
+          "description": "Living room design 7."
+        },
+        {
+          "src": "/asset/img/livingroom/livingroom8.jpg",
+          "description": "Living room design 8."
+        },
+        {
+          "src": "/asset/img/livingroom/livingroom9.jpg",
+          "description": "Living room design 9."
+        }
+      ]
+    },
+    {
+      "name": "Bathroom",
+      "description": "Elegant bathroom designs featuring modern fixtures, sleek tiles, and relaxing atmospheres.",
+      "images": [
+          {
+              "src": "/asset/img/bathroom/bathroom1.jpg",
+              "description": "Bathroom design 1."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom2.jpg",
+              "description": "Bathroom design 2."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom3.jpg",
+              "description": "Bathroom design 3."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom4.jpg",
+              "description": "Bathroom design 4."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom5.jpg",
+              "description": "Bathroom design 5."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom6.jpg",
+              "description": "Bathroom design 6."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom7.jpg",
+              "description": "Bathroom design 7."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom8.jpg",
+              "description": "Bathroom design 8."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom9.jpg",
+              "description": "Bathroom design 9."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom10.jpg",
+              "description": "Bathroom design 10."
+          },
+          {
+              "src": "/asset/img/bathroom/bathroom11.jpg",
+              "description": "Bathroom design 11."
+          }
+      ]
+    }
+  ]
+}
