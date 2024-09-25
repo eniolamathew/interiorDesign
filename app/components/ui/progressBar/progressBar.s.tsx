@@ -1,6 +1,5 @@
 import theme from "../../style/theme";
 import styled from "styled-components";
-import { IProgressBarProps } from "./progressBar.i";
 
 export const ProgressBar = styled.div`
     background-color: ${theme.colors.lightGrey};
@@ -19,5 +18,3 @@ export const ProgressBar = styled.div`
         position: absolute;
     }
 `;
-
-// width: ${(props: IProgressBarProps) => props.width}%;

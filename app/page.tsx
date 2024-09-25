@@ -1,38 +1,64 @@
+"use client"
+import { useState } from "react";
 import Home from "./components/home/Home";
+import carouselsData from '../data/carousels.json';
 import GradientDivider from "./components/home/subComponents/GradientDivider";
 import HomeCarousel from "./components/home/subComponents/HomeCarousel";
-import Title from "./components/home/Title";
 import "./globals.css";
-import carouselData from "./components/home/subComponents/carousel.json";
-import Navbar from "./components/navbar/Navbar";
+import FAQ from "./components/faq/faq";
+import Footer from "./components/footer/Footer";
+import { ICarousel } from "@/models/interface";
 
-export default function Page() {
+interface CarouselImage {
+  src: string;
+  description: string;
+  liked:boolean;
+}
+
+interface Carouselfile {
+  name: string;
+  description: string;
+  images: CarouselImage[];
+}
+
+export default function Page() {  
+  const [carouselData, setCarouselData]= useState<ICarousel[]>(carouselsData.carousels)
+    
   return (
     <>
-      <Navbar />
-      <Home />
+      <Home /> 
       <GradientDivider />
-      <Title />
+      <div className="mt-12"></div>
+      <HomeCarousel 
+        title="Bedroom"
+        autoplay={false}
+        setCarouselData={setCarouselData}
+        carouselData={carouselData}
+        carousel={carouselData!.filter(x => x.name.toLowerCase() === "bedroom")}
+      />
       <HomeCarousel 
         title="LivingRoom"
         autoplay={false}
-        carousel={carouselData.carousels}
+        carouselData={carouselData}
+        setCarouselData={setCarouselData}
+        carousel={carouselData!.filter(x => x.name.toLowerCase() === "livingroom")}
       />
       <HomeCarousel 
         title="Kitchen"
         autoplay={false}
-        carousel={carouselData.carousels}
-      />
-      <HomeCarousel 
-        title="Bedroom"
-        autoplay={false}
-        carousel={carouselData.carousels}
+        carouselData={carouselData}
+        setCarouselData={setCarouselData}
+        carousel={carouselData!.filter(x => x.name.toLowerCase() === "kitchen")}
       />
       <HomeCarousel 
         title="Bathroom"
         autoplay={false}
-        carousel={carouselData.carousels}
-      /> 
+        carouselData={carouselData}
+        setCarouselData={setCarouselData}
+        carousel={carouselData!.filter(x => x.name.toLowerCase() === "bathroom")}
+      />
+      <FAQ />
+      <Footer />
     </>
   );
 }

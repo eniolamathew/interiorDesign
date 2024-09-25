@@ -1,8 +1,8 @@
-import styled, { keyframes } from 'styled-components';
-import theme from '../style/theme';
+import styled, { keyframes } from "styled-components";
+import theme from "../style/theme";
 
 interface HomeContainerProps {
-  background: string;
+  $background: string;
 }
 
 const moveBackground = keyframes`
@@ -25,13 +25,13 @@ export const HomeContainer = styled.div<HomeContainerProps>`
   position: relative;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 120%;
     height: 100%;
-    background-image: url(${props => props.background});
+    background-image: url(${(props) => props.$background});
     background-size: cover;
     background-position: center;
     animation: ${moveBackground} 20s infinite alternate linear;
@@ -39,14 +39,21 @@ export const HomeContainer = styled.div<HomeContainerProps>`
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
     z-index: 2;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 15%, rgba(0, 0, 0, 0.80) 50%, rgba(0, 0, 0, 0.95) 70%, rgba(0, 0, 0, 0.6) 95%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.8) 15%,
+      rgba(0, 0, 0, 0.8) 50%,
+      rgba(0, 0, 0, 0.95) 70%,
+      rgba(0, 0, 0, 0.6) 95%,
+      rgba(0, 0, 0, 1) 100%
+    );
     opacity: 0.9;
   }
 `;
@@ -62,6 +69,7 @@ export const ContentWrapper = styled.div`
 
 export const MaxWidth = styled.div`
   max-width: ${theme.breakpoints.lg}px;
+  padding: 0 0.5rem;
   margin: 0 auto;
   text-align: center;
 `;
@@ -71,13 +79,45 @@ export const HomeContent = styled.div`
   color: white;
 `;
 
-export const EmailContainer = styled.div`
+export const SignUpContainer = styled.div`
   display: flex;
-  width: 100%;
-  height: 80px;
-  align-items: center;
-  margin-top: 12px;
+  flex-direction: row;
+  align-items: flex-start;
   justify-content: center;
+  margin-top: 1rem;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
+    flex-direction: column;
+  }
+`;
+export const EmailWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+export const Email = styled.div`
+  width: 32rem;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
+    width: 20rem;
+  }
+`;
+
+export const GetStarted = styled.div`
+  width: 32rem;
+  @media (max-width: ${(props) => props.theme.breakpoints.md}px) {
+    width: 20rem;
+  }
 `;
 
 export const ButtonContainer = styled.div`
@@ -95,7 +135,15 @@ export const CurveContainer = styled.div`
 
 export const GradientBackground = styled.div`
   height: 5px;
-  background: linear-gradient(90deg, #FE3600 0%, #FF7B02 16%, #FAD220 34%, #81DA42 58%, #318EFF 81%, #8B68E8 100%);
+  background: linear-gradient(
+    90deg,
+    #fe3600 0%,
+    #ff7b02 16%,
+    #fad220 34%,
+    #81da42 58%,
+    #318eff 81%,
+    #8b68e8 100%
+  );
   filter: blur(4px);
   position: absolute;
   z-index: 5;
@@ -111,7 +159,7 @@ export const Text2 = styled.div`
   color: white;
 
   span {
-    color: #007BFF;
+    color: #007bff;
   }
 `;
 

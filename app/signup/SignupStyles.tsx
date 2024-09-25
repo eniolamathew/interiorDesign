@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const SignupWrapper = styled.div`
   width: 100vw;
@@ -72,26 +72,8 @@ export const GradientBackground = styled.div`
 `;
 
 export const Text1 = styled.div`
+  text-align: start;
   font-size: 3rem;
   color: white;
-`;
-
-export const Text2 = styled.div`
-  font-size: 2rem;
-  color: white;
-
-  span {
-    color: #007bff;
-  }
-`;
-
-export const Text3 = styled.div`
-  font-size: 1.2rem;
-  color: white;
-`;
-
-export const Text4 = styled.div`
-  font-size: 1.2rem;
-  margin-top: 2rem;
-  color: white;
+  margin-bottom: 1rem;
 `;
