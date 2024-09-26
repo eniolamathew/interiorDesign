@@ -1,31 +1,17 @@
 "use client"
-import react, {useState, useEffect} from "react"
+import {useState, useEffect} from "react"
 import Carousel from '../../../components/carousel/carousel'
 import theme from '../../style/theme'
 import styled from 'styled-components'
 import ImageLoader from './ImageLoader';
-
-// Type for individual image in the carousel
-interface CarouselImage {
-    src: string;
-    description: string;
-}
-  
-// Type for a carousel which includes name, description, and images
-interface Carousel {
-    name: string;
-    description: string;
-    images: CarouselImage[];
-}
-
-interface CarouselData {
-    carousels: Carousel[];
-}
+import { ICarousel, ICarouselImage } from '../../../../models/interface';
 
 interface ICategoryIntroProps {
     title: string,
     autoplay: boolean,
-    carousel: Carousel[];
+    carousel: ICarousel[];
+    carouselData: ICarousel[];
+    setCarouselData: React.Dispatch<React.SetStateAction<ICarousel[]>>;
 }
 
 const IntroHeaderCarousel = styled.div`
@@ -77,8 +63,8 @@ function HomeCarousel(props: ICategoryIntroProps) {
     
     return <>
         <Block>
-            {props.carousel?.length > 0 && props.carousel.map((carousel: Carousel, index: number) => <div key={index}> {
-                carousel.name === props.title &&
+            {props.carousel?.length > 0 && props.carousel.map((carousel: ICarousel, index: number) => <div key={index}> {
+                carousel.name.toLowerCase() === props.title.toLowerCase() &&
                 <div className={props.title.toLowerCase()}>
                         <Title >{carousel.description}</Title>
                         <IntroHeaderCarousel>
@@ -86,12 +72,15 @@ function HomeCarousel(props: ICategoryIntroProps) {
                                 name={props.title.toLowerCase()}
                                 autoplay={props.autoplay}
                                 mousePosition={mousePosition}
-                                interval={5000}  
+                                carouselData={props.carouselData}
+                                setCarouselData={props.setCarouselData}
+                                // interval={5000}
+                                draggable={false}
                                 hasDots={true}
-                                slidesToShow={5}
-                                slidesToScroll={5}
+                                slidesToShow={6}
+                                slidesToScroll={6}
                             >                                    
-                                {carousel.images?.length > 0 && carousel.images.map((item: CarouselImage, index: number) =>
+                                {carousel.images?.length > 0 && carousel.images.map((item: ICarouselImage, index: number) =>
                                 <div key={index} >
                                     <ImageHolder>
                                         <ImageLoader
@@ -99,9 +88,9 @@ function HomeCarousel(props: ICategoryIntroProps) {
                                             alt={item.description}
                                             width={150}
                                             height={150}
-                                            maxSize={5}
-                                            layout="fill"
-                                            breaks={[320, 568, 800, 1280]}
+                                            $maxSize={5}
+                                            $layout="fill"
+                                            $breaks={[320, 568, 800, 1280]}
                                             description={item.description}
                                         />
                                     </ImageHolder>

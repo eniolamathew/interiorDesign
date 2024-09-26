@@ -1,49 +1,51 @@
 import { IMicroserviceApiError } from "../shared/api/microserviceApi";
 
-export interface IUserLoginResult {
-    error?: string
-    resendWelcomeEmailToken?: string
-    success: boolean
+export interface ISignUpPayload {
+    email: string
+    password: string
+}
+
+export interface ILoginPayload extends ISignUpPayload {}
+
+export interface IProfilePayload {
+    email: string
+    fullname: string
+    useraddress: string
+    postcode: string
 }
 
 export interface ILoginResult {
-    accessToken: string
-    refreshToken: string
-    isEmailConfirmed: string
-    resendWelcomeEmailToken: string,
-    errors: IMicroserviceApiError[],
-    defaultCountry: string | null,
-    defaultCurrency: string | null,
+    accesstoken: string,
+    isUserConfirmed: boolean
 }
 
-export interface IUserAddress {
+export interface ISignUpResult {
+    message: string
+}
+
+export interface IGetUserByIdResult {
     id: number,
-    isDefault: boolean,
-    contactName: string,
-    addressLine1: string,
-    addressLine2: string,
-    addressLine3: string,
-    city: string,
-    county: string,
-    postCode: string,
-    countryId: number,
-    countryName: string,
-    phone: string
+    email: string,
+    subscribed: boolean,
+    createdat: string
 }
 
-export interface IRegistrationResult {
-    resendWelcomeEmailToken: string
-    accessToken: string
-    refreshToken: string
-    errors: IMicroserviceApiError[]
+export interface IGetUserProfileByEmailResult {
+    Id: number,
+    Fullname: string,
+    Email: string,
+    Useraddress: string,
+    Postcode: string,
 }
 
-export interface IUserRegister {
-    identityEmail: string
-    displayName: string
-    firstName: string
-    lastName: string
-    password: string
-    newsletter: boolean
-    wishlist: number[]
+export interface IResetPassword {
+    email: string,
+    password: string,
+    token: string,
+}
+
+export interface IChangePassword {
+    email: string,
+    oldpassword: string,
+    newpassword: string,
 }

@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const LoginWrapper = styled.div`
   width: 100vw;
@@ -72,6 +72,7 @@ export const GradientBackground = styled.div`
 `;
 
 export const Text1 = styled.div`
+  text-align:start;
   font-size: 3rem;
   color: white;
 `;
@@ -94,4 +95,5 @@ export const Text4 = styled.div`
   font-size: 1.2rem;
   margin-top: 2rem;
   color: white;
+  margin-bottom: 1rem;
 `;

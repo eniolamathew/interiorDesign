@@ -4,4 +4,5 @@ export interface IInputProps {
     onChange: any
     onBlur?: any
     obscureText?: boolean
+    autoComplete:boolean
 }

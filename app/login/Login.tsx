@@ -6,71 +6,124 @@ import {
   LoginContainer,
   LoginContent,
   Text1,
-  Text2,
-  Text3,
-  Text4,
 } from "./LoginStyles";
-import InputContainer from "../components/ui/input/InputContainer";
-import ButtonContainer from "../components/ui/buttons/ButtonContainer";
+import InputContainer from "../components/ui/emailInput/InputContainer";
+import HomeUiButton from "../components/ui/buttons/HomeUiButton";
 import Link from "next/link";
+import { formatPasswordErrors, validatePassword } from "@/shared/helperFunctions/helperFunctions";
+import userApiData from "../../shared/data/userApiData";
+import { useRouter } from 'next/navigation'
+import {  toast } from 'react-toastify';
+import { useAuth } from "@/shared/context/AuthContext";
+import UserAuthManager from "@/shared/data/UserAuthManager";
+import HomeNavbar from "../components/navbar/HomeNavbar";
+import PasswordContainer from "../components/ui/password/PasswordContainer";
 
 export default function Login() {
+  const { login } = useAuth();
+  const router = useRouter()
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [invalidEmail, setInvalidEmail] = useState<string>("");
   const [invalidPassword, setInvalidPassword] = useState<string>("");
 
-  const validateData = ()=>{
+  const clearError = ()=>{
+    setInvalidPassword("")
+    setInvalidEmail("")
+  }
+
+  const validateForm =()=> {
     if(email.length === 0){
-        setInvalidEmail("Please provide a valid Email")
+      setInvalidEmail("Email Address cannot be null")
     }
     if(password.length === 0){
-        setInvalidEmail("Please provide a valid Password")
+      setInvalidPassword("Password cannot be null")
+    }
+    if(password.trim() ){
+    const passWordError = formatPasswordErrors(validatePassword(password))
+      if(passWordError.length ===  0){
+        submitData(email.toLowerCase(), password)
+      }
+      else{
+        setInvalidPassword(passWordError)
+      }
+    }
+  }
+
+  async function submitData(email:string, password: string) {
+      try {
+        const result = await userApiData.loginAsync(email, password);
+          if (result.success && result.payload?.accesstoken) {
+            UserAuthManager.setToken(result.payload.accesstoken)
+            login(result.payload.accesstoken); 
+            toast.success("User Logged In!", {autoClose: 3000});
+            setTimeout(() => { router.push("/design") }, 100)
+        } else {
+          toast.error(`Registration failed: ${result.errors[0]}`, {position: "top-right"});
+        }
+    } catch(error) {
+      Promise.reject(error)
     }
   }
 
   return (
+    <>
+    <HomeNavbar />
+
     <LoginWrapper>
       <LoginContainer>
         <MaxWidth>
           <LoginContent>
             <Text1>Sign In</Text1>
-            <div className="mb-2">
+            <div className="mb-2 loginEmail">
                 <InputContainer
                     label={"Email Address"}
                     value={email}
                     obscureText={false}
-                    onChange={(e:ChangeEvent<HTMLInputElement>)=>{ setEmail(e.target.value)}}
+                    onChange={(e:ChangeEvent<HTMLInputElement>)=>{ setEmail(e.target.value) 
+                      clearError()
+                    }}
                     error={invalidEmail}
+                    disabled={false}
+                    autoComplete={false}
                 />
             </div>
-            <div className="mb-2">
-                <InputContainer
+            <div className="mb-2 loginPassword">
+                <PasswordContainer
                     label={"Password"}
                     value={password}
                     obscureText={true}
-                    onChange={(e:ChangeEvent<HTMLInputElement>)=>{ setPassword(e.target.value)}}
+                    disabled={false}
+                    onChange={(e:ChangeEvent<HTMLInputElement>)=>{ setPassword(e.target.value)
+                      clearError()
+                    }}
                     error={invalidPassword}
+                    autoComplete={false}
                 />
             </div>      
-            <ButtonContainer
+            <HomeUiButton
               icon={false}
               text={"Sign In"}
               onClick={(e) => {
                 e.preventDefault();
-
+                validateForm()
               }}
             />
             <div className="mt-4">
-                <Link href="#">Forgot Password?</Link>
+              <Link href="/forgotpassword">Forgot Password?</Link>
             </div>
             <div className="mt-4">
                 <span style={{color:"#acacac"}}>New to us? </span>
-                <Link href="/signup">Sign up now.</Link>
+                <Link href="/signup"> Sign up now.</Link>
+            </div>
+            <div className="mt-4">
+                <Link href="/">Back to home</Link>
             </div>
           </LoginContent>
         </MaxWidth>
       </LoginContainer>
     </LoginWrapper>
+    </>
+
   );
 }           

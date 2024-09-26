@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Col } from "../../style/layout"
 import { IInputProps } from "./input.i"
 import { InputHolder, InputWrapper, FloatingLabel, InputError } from "./input.s"
 
@@ -19,11 +18,11 @@ const Input: React.FC<IInputProps> = (props) => {
             onBlur={handleBlur}
             onFocus={handleFocus}
             onChange={props.onChange}
+            disabled={props.disabled}
             type={props.obscureText ? "password" : "text"}
-            isFocused={isFocused}
-            placeholder=" " // This is necessary to trigger :not(:placeholder-shown)
+            placeholder=" " 
           />
-          <FloatingLabel isFocused={isFocused} hasValue={!!props.value}>
+          <FloatingLabel $isFocused={isFocused} $hasValue={!!props.value}>
             {props.label}
           </FloatingLabel>
           <InputError> 

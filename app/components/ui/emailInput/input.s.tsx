@@ -3,7 +3,6 @@ import styled from "styled-components"
 interface IInputHolderProps extends React.HTMLAttributes<HTMLInputElement> {
     value?: string;
     type: string;
-    isFocused: boolean;
 }
 
 const InputWrapper = styled.div`
@@ -13,19 +12,19 @@ const InputWrapper = styled.div`
 `;
 
 const InputError = styled.div`
-  height: 24px;
+  min-height: 24px;
   position: relative;
   text-align: left;
   color: var(--colour-red);
 `;
 
-const FloatingLabel = styled.label<{ isFocused: boolean; hasValue: boolean }>`
+const FloatingLabel = styled.label<{ $isFocused: boolean; $hasValue: boolean }>`
   position: absolute;
   left: 16px;
-  top: ${(props) => (props.isFocused || props.hasValue ? '16px' : `calc(50% - 12px)` )};
-  transform: ${(props) => (props.isFocused || props.hasValue ? 'translateY(-50%) scale(0.8)' : 'translateY(-50%)')};
+  top: ${(props) => (props.$isFocused || props.$hasValue ? '16px' : `calc(50% - 12px)` )};
+  transform: ${(props) => (props.$isFocused || props.$hasValue ? 'translateY(-50%) scale(0.8)' : 'translateY(-50%)')};
   transform-origin: left;
-  color: ${(props) => (props.isFocused ? '#B4B4B4' : '#B4B4B4')};
+  color: ${(props) => (props.$isFocused ? '#B4B4B4' : '#B4B4B4')};
   transition: all 0.2s ease-out;
   pointer-events: none;
   text-align: left;
@@ -49,6 +48,7 @@ const InputHolder = styled.input<IInputHolderProps>`
 
   &:focus + ${FloatingLabel}, &:not(:placeholder-shown) + ${FloatingLabel} {
     top: 16px;
+    font-size: 0.6rem
     transform: translateY(-50%) scale(0.9);
   }
 `;
